@@ -36,6 +36,7 @@ const Login = ({open, onClose, onLogin}: Properties): React.Node => {
     const handleLogin = () => {
         const loginData = loginBuilder({[LOGIN_KEYS.LOGIN]: name, [LOGIN_KEYS.PASSWORD]: password});
         onLogin(loginData);
+        onClose();
     };
 
     return (

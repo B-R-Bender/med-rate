@@ -75,6 +75,7 @@ const Registration = ({regions, cities, polyclinics, open, onClose, onRegister, 
 
     const handleRegister = () => {
         onRegister(state);
+        onClose();
     };
 
     return (
@@ -174,7 +175,7 @@ const Registration = ({regions, cities, polyclinics, open, onClose, onRegister, 
                     Отмена
                 </Button>
                 <Button variant="contained" color={"primary"} onClick={handleRegister}>
-                    Войти
+                    Создать учётную запись
                 </Button>
             </DialogActions>
         </Dialog>

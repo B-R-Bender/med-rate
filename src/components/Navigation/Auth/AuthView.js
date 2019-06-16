@@ -12,6 +12,7 @@ import Registration from "./Register";
 import LoginComponent from "./Login";
 import Ternary from "../../HOC/Ternary";
 import Condition from "../../HOC/Condition";
+import Typography from "@material-ui/core/Typography";
 
 type Properties = {
     login: Login,
@@ -30,7 +31,10 @@ const AuthView = ({login, loginProcessing, onLogout}: Properties): React.Node =>
     const handleUserMenuOpen = (event) => setAnchorEl(event.currentTarget);
     const handleUserMenuClose = () => setAnchorEl(null);
     const handleLoginOpen = () => setLoginOpen(true);
-    const handleLoginClose = () => setLoginOpen(false);
+    const handleLoginClose = () => {
+        setLoginOpen(false);
+        handleUserMenuClose();
+    };
     const handleRegisterOpen = () => setRegisterOpen(true);
     const handleRegisterClose = () => setRegisterOpen(false);
 
@@ -41,6 +45,9 @@ const AuthView = ({login, loginProcessing, onLogout}: Properties): React.Node =>
                         aria-haspopup="true"
                         onClick={handleUserMenuOpen}
                         color="inherit">
+                <Condition match={loggedIn}>
+                    <Typography style={{margin: "0 1em"}}>{login.get(LOGIN_KEYS.LOGIN)}</Typography>
+                </Condition>
                 <AccountCircle/>
             </IconButton>
             <Menu id="menu-appbar"

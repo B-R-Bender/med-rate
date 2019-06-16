@@ -14,11 +14,15 @@ function registerUser(data: Register): ThunkAction {
     return dispatch => {
         request();
 
+/*
         axios.put(`${BASE_API_URI}/create`, data.toJS())
             .then(
                 response => success(response.data),
                 () => failure()
             );
+*/
+
+        success(1);
 
         function request() {
             dispatch({type: ACTION_TYPES.AUTH_REGISTER_REQUEST, payload: data});
@@ -38,11 +42,15 @@ function loginUser(data: Login): ThunkAction {
     return dispatch => {
         request();
 
+/*
         axios.get(`${BASE_API_URI}/find?login=${data.login}&password=${data.password}`)
             .then(
                 response => success(response.data),
                 () => failure()
             );
+*/
+
+        success({id: 123456789});
 
         function request() {
             dispatch({type: ACTION_TYPES.AUTH_LOGIN_REQUEST, payload: data});

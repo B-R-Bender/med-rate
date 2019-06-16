@@ -17,6 +17,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Add from '@material-ui/icons/Add';
+import ListIcon from "@material-ui/icons/List";
 import History from '@material-ui/icons/History';
 import Mail from '@material-ui/icons/Mail';
 import Help from '@material-ui/icons/Help';
@@ -28,6 +29,7 @@ import {useStyles} from "./styles";
 import Condition from "../HOC/Condition";
 import Auth from "./Auth";
 import {Link} from "react-router-dom";
+import Badge from "@material-ui/core/Badge";
 
 type Properties = {
     login: Login,
@@ -56,7 +58,7 @@ const Navigation = ({login, menuOpen, onMenuOpenTriggered}: Properties): React.N
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" noWrap className={classes.title}>
-                        Мед +
+                        МедИнспектор
                     </Typography>
                     <Auth/>
                 </Toolbar>
@@ -76,11 +78,19 @@ const Navigation = ({login, menuOpen, onMenuOpenTriggered}: Properties): React.N
                 <Divider/>
                 <Condition match={loggedIn}>
                     <List>
-                        <ListItem button>
+                        <ListItem button component={Link} to={"/rating"}>
                             <ListItemIcon>
-                                <Add component={Link} to={"/rating"}/>
+                                <Add/>
                             </ListItemIcon>
                             <ListItemText primary={"Новая оценка"}/>
+                        </ListItem>
+                        <ListItem button component={Link} to={"/ratings"}>
+                            <ListItemIcon>
+                                <Badge badgeContent={1} color="primary">
+                                    <ListIcon/>
+                                </Badge>
+                            </ListItemIcon>
+                            <ListItemText primary={"Активные оценки"}/>
                         </ListItem>
                         <ListItem button>
                             <ListItemIcon>
