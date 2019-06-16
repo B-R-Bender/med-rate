@@ -34,7 +34,11 @@ const Login = ({open, onClose, onLogin}: Properties): React.Node => {
     };
 
     const handleLogin = () => {
-        const loginData = loginBuilder({[LOGIN_KEYS.LOGIN]: name, [LOGIN_KEYS.PASSWORD]: password});
+        const loginData = loginBuilder({
+            [LOGIN_KEYS.LOGIN]: name,
+            [LOGIN_KEYS.PASSWORD]: password,
+            [LOGIN_KEYS.ROLE]: name === "ivanov" ? LOGIN_KEYS.USER_ROLE : LOGIN_KEYS.MODERATOR_ROLE
+        });
         onLogin(loginData);
         onClose();
     };

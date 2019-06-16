@@ -5,6 +5,7 @@ import createBrowserHistory from "history/createBrowserHistory";
 import MainScreen from "../screens/Main";
 import Ratings from "../screens/Ratings";
 import Rating from "../screens/Rating";
+import Moderator from "../components/Moderator";
 
 export const history = createBrowserHistory();
 
@@ -14,6 +15,7 @@ const AppRouter = () => (
             <MainScreen>
                 <Route exact path={"/"} component={Ratings}/>
                 <Route path={"/rating/:id?"} component={Rating}/>
+                <Route path={"/moderator/ratings"} component={Moderator}/>
             </MainScreen>
         </Switch>
     </Router>

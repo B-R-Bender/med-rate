@@ -30,6 +30,7 @@ import Condition from "../HOC/Condition";
 import Auth from "./Auth";
 import {Link} from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
+import Ternary from "../HOC/Ternary";
 
 type Properties = {
     login: Login,
@@ -77,28 +78,38 @@ const Navigation = ({login, menuOpen, onMenuOpenTriggered}: Properties): React.N
                 </div>
                 <Divider/>
                 <Condition match={loggedIn}>
-                    <List>
-                        <ListItem button component={Link} to={"/rating"}>
-                            <ListItemIcon>
-                                <Add/>
-                            </ListItemIcon>
-                            <ListItemText primary={"Новая оценка"}/>
-                        </ListItem>
-                        <ListItem button component={Link} to={"/ratings"}>
-                            <ListItemIcon>
-                                <Badge badgeContent={1} color="primary">
+                    <Ternary match={login.get(LOGIN_KEYS.ROLE) === LOGIN_KEYS.USER_ROLE}>
+                        <List>
+                            <ListItem button component={Link} to={"/rating"}>
+                                <ListItemIcon>
+                                    <Add/>
+                                </ListItemIcon>
+                                <ListItemText primary={"Новая оценка"}/>
+                            </ListItem>
+                            <ListItem button component={Link} to={"/ratings"}>
+                                <ListItemIcon>
+                                    <Badge badgeContent={1} color="primary">
+                                        <ListIcon/>
+                                    </Badge>
+                                </ListItemIcon>
+                                <ListItemText primary={"Активные оценки"}/>
+                            </ListItem>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <History/>
+                                </ListItemIcon>
+                                <ListItemText primary={"История оценок"}/>
+                            </ListItem>
+                        </List>
+                        <List>
+                            <ListItem button component={Link} to={"/moderator/ratings"}>
+                                <ListItemIcon>
                                     <ListIcon/>
-                                </Badge>
-                            </ListItemIcon>
-                            <ListItemText primary={"Активные оценки"}/>
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <History/>
-                            </ListItemIcon>
-                            <ListItemText primary={"История оценок"}/>
-                        </ListItem>
-                    </List>
+                                </ListItemIcon>
+                                <ListItemText primary={"Оценки пользователей"}/>
+                            </ListItem>
+                        </List>
+                    </Ternary>
                     <Divider/>
                 </Condition>
                 <List>

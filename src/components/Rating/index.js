@@ -14,7 +14,7 @@ import Condition from "../HOC/Condition";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import {Redirect, withRouter} from "react-router";
+import {withRouter} from "react-router";
 
 type Properties = {
     id: ?number,

@@ -42,18 +42,23 @@ export const registerBuilder: RecordFactory<RegisterProps> = Record(registerDefa
 export type Register = RecordOf<RegisterProps>;
 
 const TOKEN: "token" = "token";
+const ROLE: "role" = "role";
+const USER_ROLE: "user" = "user";
+const MODERATOR_ROLE: "moderator" = "moderator";
 
 type LoginProps = {|
     login: string,
     password: string,
-    token: ?string
+    token: ?string,
+    role: typeof USER | typeof MODERATOR
 |};
 const loginDefaults: LoginProps = {
     [LOGIN]: "",
     [PASSWORD]: "",
-    [TOKEN]: null
+    [TOKEN]: null,
+    [ROLE]: USER_ROLE
 };
-export const LOGIN_KEYS = Object.freeze({LOGIN, PASSWORD, TOKEN});
+export const LOGIN_KEYS = Object.freeze({LOGIN, PASSWORD, TOKEN, ROLE, USER_ROLE, MODERATOR_ROLE});
 export const loginBuilder: RecordFactory<LoginProps> = Record(loginDefaults);
 export type Login = RecordOf<LoginProps>;
 
