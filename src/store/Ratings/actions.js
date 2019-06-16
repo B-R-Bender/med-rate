@@ -5,6 +5,8 @@ import {ACTION_TYPES, BASE_API_URI} from "./constants";
 import type {ThunkAction} from "./constants";
 import type {Ratings} from "../../types/Ratings";
 import {ratingsBuilder} from "../../types/Ratings";
+import Typography from "../../components/Rating";
+import * as React from "react";
 
 export default {
     loadRatings
@@ -35,13 +37,13 @@ function loadRatings(): ThunkAction {
             dispatch({
                 type: ACTION_TYPES.RATINGS_SUCCESS,
                 payload: Set([{
-                    polyclinic: "ПОЛИКИЛИНИКА НГАХУЙ",
+                    polyclinic: "ГБУЗ РК Симферопольская поликлиника № 4",
                     common_rating: 3,
-                    detailed_rating: Map({lalal: 3, tratratra: 2})
+                    detailed_rating: Map({"Техническое состояние помещения": 3, "Вежливость персонала": 4, "Опрятность персонала": 4})
                 },{
-                    polyclinic: "ПОЛИКИЛИНИКА НГАХУЙ 2",
+                    polyclinic: "ГБУЗ РК Поликлиника № 3",
                     common_rating: 3,
-                    detailed_rating: Map({lalal: 3, tratratra: 2})
+                    detailed_rating: Map({"Техническое состояние помещения": 3, "Вежливость персонала": 3, "Опрятность персонала": 5})
                 }].map(rating => ratingsBuilder(rating)))
             });
 
