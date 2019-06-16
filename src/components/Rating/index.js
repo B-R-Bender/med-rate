@@ -47,8 +47,8 @@ const Rating = ({id, history}: Properties): React.Node => {
 
     function handleNext() {
         if (activeStep === 3) {
-            axios.post("http://tomcat.rs-soft.site/hackathon-app-1.0-SNAPSHOT/steps", {
-                userId: id,
+            axios.post("http://tomcat.rs-soft.site/hackathon-app-1.0-SNAPSHOT/step", {
+                userId: 1,
                 stepOne: {
                     diagnosisId,
                     symptoms,
